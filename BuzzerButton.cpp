@@ -7,11 +7,11 @@ extern BuzzerButton* answering_respondent;
 extern BuzzerButton buttons[RESPONDENTS];
 
 BuzzerButton::BuzzerButton(){}
-BuzzerButton::BuzzerButton(byte o_pin, byte i_pin){
+BuzzerButton::BuzzerButton(byte i_pin, byte o_pin){
 	servo.attach(o_pin);
-	servo.write(0, 64, false);
+	reset_servo();
 
-	pinMode(i_pin, INPUT);
+	pinMode(i_pin, INPUT_PULLUP);
 	input_pin = i_pin;
 
 	is_pressed = false;
